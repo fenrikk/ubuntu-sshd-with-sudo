@@ -11,6 +11,9 @@ else
     useradd -ms /bin/bash "$SSH_USERNAME"
     echo "$SSH_USERNAME:$PASSWORD" | chpasswd
     echo "User $SSH_USERNAME created with the provided password"
+
+    # Add user to the sudo group
+    usermod -aG sudo "$SSH_USERNAME"
 fi
 
 # Set the authorized keys from the AUTHORIZED_KEYS environment variable (if provided)
